@@ -29,7 +29,7 @@ class ProductServiceTest {
         MockitoAnnotations.openMocks(this);
 
         testProduct = new Product();
-        testProduct.setProductId("test-id"); // Langsung atur ID tanpa manipulasi UUID
+        testProduct.setProductId("test-id");
         testProduct.setProductName("Test Product");
         testProduct.setProductQuantity(10);
     }
