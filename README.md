@@ -1,3 +1,22 @@
+# Reflection Module 2
+
+
+1. Daftar masalah kualitas kode yang telah diperbaiki dan strategi penyelesaiannya:
+Penggunaan dependency yang tidak diperlukan → Menghapus dependensi yang tidak digunakan untuk mengurangi ukuran build dan meningkatkan efisiensi.
+Pengujian yang kurang cakupan (code coverage rendah) → Menambahkan lebih banyak unit test, terutama untuk controller dan service, menggunakan Mockito untuk memastikan semua fungsionalitas diuji.
+Format kode yang tidak konsisten → Menggunakan Checkstyle dan SonarQube untuk memastikan standar penulisan kode terpenuhi dan memperbaiki issue seperti indentation yang salah atau naming yang tidak sesuai konvensi.
+
+
+2. Evaluasi Implementasi CI/CD:
+Implementasi CI/CD yang dibuat sudah memenuhi definisi Continuous Integration dan Continuous Deployment.
+Continuous Integration (CI) sudah diterapkan karena setiap perubahan kode yang di-push ke repository otomatis memicu build, menjalankan test suite, dan melakukan analisis kode untuk memastikan tidak ada regresi atau error sebelum kode digabungkan ke branch utama.
+Continuous Deployment (CD) juga telah diterapkan karena setelah pipeline berhasil, kode otomatis dideploy ke PaaS tanpa intervensi manual, memastikan bahwa aplikasi selalu dalam keadaan terbaru dan dapat langsung digunakan oleh pengguna.
+Proses ini mendukung otomatisasi dan efisiensi, mengurangi kemungkinan human error, serta mempercepat waktu rilis fitur baru karena setiap perubahan kode bisa langsung diproduksi setelah melewati semua tahapan validasi di pipeline CI/CD.
+
+
+
+
+
 # Reflection 1
 
 Menurut saya, selama proses pengembangan fitur edit dan delete produk, saya mendapatkan beberapa kesulitan sehingga dapat dijadikan pelajaran dalam manajemen versi menggunakan Git serta implementasi CRUD dalam Spring Boot dengan Thymeleaf. Saya belajar bagaimana mengatur branch yang berbeda untuk setiap fitur dan melakukan merge ke branch utama dengan aman. Selain itu, saya juga memahami bagaimana menangani error terkait mapping endpoint serta mengoptimalkan pengelolaan data produk dengan UUID.
