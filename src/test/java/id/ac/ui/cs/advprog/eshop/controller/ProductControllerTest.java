@@ -4,7 +4,9 @@ import id.ac.ui.cs.advprog.eshop.model.Product;
 import id.ac.ui.cs.advprog.eshop.service.ProductService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -19,8 +21,10 @@ import java.util.UUID;
 import static org.hamcrest.Matchers.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+@ExtendWith(MockitoExtension.class)
 @WebMvcTest(ProductController.class)
 class ProductControllerTest {
 
@@ -44,14 +48,14 @@ class ProductControllerTest {
 
     @Test
     void testGetHome() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/product/"))
+        mockMvc.perform(get("/product/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"));
     }
 
     @Test
     void testCreateProductPage() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/product/create"))
+        mockMvc.perform(get("/product/create"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("createProduct"))
                 .andExpect(model().attributeExists("product"));
@@ -74,7 +78,7 @@ class ProductControllerTest {
         List<Product> products = Arrays.asList(testProduct);
         when(productService.findAll()).thenReturn(products);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/product/list"))
+        mockMvc.perform(get("/product/list"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("productList"))
                 .andExpect(model().attribute("products", hasSize(1)))
@@ -87,7 +91,7 @@ class ProductControllerTest {
     void testUpdateProductPage() throws Exception {
         when(productService.findById(productId)).thenReturn(testProduct);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/product/update/" + productId))
+        mockMvc.perform(get("/product/update/" + productId))
                 .andExpect(status().isOk())
                 .andExpect(view().name("editProduct"))
                 .andExpect(model().attributeExists("product"))
@@ -98,7 +102,7 @@ class ProductControllerTest {
     void testUpdateProduct_NotFound() throws Exception {
         when(productService.findById(productId)).thenReturn(null);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/product/update/" + productId))
+        mockMvc.perform(get("/product/update/" + productId))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/product/list"));
     }
@@ -123,4 +127,5 @@ class ProductControllerTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/product/list"));
     }
+    
 }
