@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 
 @Repository
-public class ProductRepository {
+public class ProductRepository implements IProductRepository {
     private List<Product> products = new ArrayList<>();
 
     public Product create(Product product) {
