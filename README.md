@@ -1,3 +1,13 @@
+# Reflection Module 3
+
+Selama latihan ini, saya fokus pada peningkatan pemeliharaan dan kejelasan kode dengan memperbaiki berbagai masalah kualitas kode. Salah satu perbaikan pertama yang saya lakukan adalah menghapus modifier publik yang tidak diperlukan pada antarmuka ProductService karena itu redundan dan tidak mengikuti praktik terbaik. Pada kelas EshopApplication, saya awalnya menambahkan konstruktor privat dan menandai kelas sebagai final untuk memenuhi peringatan PMD terkait dengan kelas utilitas. Namun, setelah menyadari bahwa kelas konfigurasi Spring Boot perlu dapat diinstansiasi dan tidak boleh final untuk keperluan pemrograman proxy, saya membatalkan perubahan tersebut dan sebagai gantinya menekan peringatan "UseUtilityClass" untuk menjaga fungsionalitas sambil tetap memperhatikan masalah analisis statis.
+
+Tantangan lain yang saya hadapi adalah kesalahan izin Gradle pada Dockerfile kami. Saya menyelesaikan masalah ini dengan memastikan skrip gradlew dapat dieksekusi, yang menghilangkan masalah tersebut dan memastikan proses build berjalan lancar di lingkungan yang terkontainerisasi.
+
+Dalam hal CI/CD, alur kerja yang saya terapkan sepenuhnya mendukung Integrasi Kontinu dan Pengiriman Kontinu. Setiap commit secara otomatis memicu rangkaian uji dan pemeriksaan analisis statis, membantu mendeteksi masalah sejak dini dalam siklus pengembangan. Setelah semua uji lulus, kode dideploy ke lingkungan PaaS kami tanpa memerlukan intervensi manual. Automatisasi ini tidak hanya meningkatkan kualitas kode secara keseluruhan, tetapi juga membuat proses pengembangan jauh lebih efisien dan andal.
+
+Secara keseluruhan, latihan ini membantu saya lebih memahami praktik terbaik untuk menjaga kebersihan kode dan menguatkan pentingnya otomatisasi pengujian dan pengiriman untuk memperlancar pengembangan perangkat lunak.
+
 # Reflection Module 2
 
 
