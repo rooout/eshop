@@ -15,9 +15,9 @@ public enum PaymentStatus {
         this.value = paymentStatus;
     }
 
-    public static  boolean contains(String param){
-        for (PaymentStatus paymentStatus : PaymentStatus.values()){
-            if (paymentStatus.name().equals(param)){
+    public static boolean contains(String param) {
+        for (PaymentStatus paymentStatus : PaymentStatus.values()) {
+            if (paymentStatus.name().equals(param)) {
                 return true;
             }
         }
