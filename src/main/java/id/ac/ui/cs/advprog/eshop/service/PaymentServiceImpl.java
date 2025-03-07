@@ -6,6 +6,7 @@ import id.ac.ui.cs.advprog.eshop.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,21 +22,23 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public Payment addPayment(Order order, String method, Map<String, String> paymentData) {
-        return null;
+        return paymentRepository.addPayment(method, paymentData, order);
     }
 
     @Override
     public Payment setStatus(Payment payment, String status) {
-        return null;
+        return paymentRepository.setStatus(payment, status);
     }
 
     @Override
     public Payment getPayment(String paymentId) {
-        return null;
+        return paymentRepository.getPayment(paymentId);
     }
 
     @Override
     public List<Payment> getAllPayments() {
-        return null;
+        List<Payment> paymentsList = new ArrayList<>();
+        paymentRepository.getAllPayments().forEachRemaining(paymentsList::add);
+        return paymentsList;
     }
 }
